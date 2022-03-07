@@ -1,0 +1,48 @@
+<!-- INSERT FORM TO INPUT new item entries -->
+<div class="container-fluid">
+  <div class="d-flex justify-content-center">
+    <h1>Add New Item:</h1>
+  </div>
+  <form class="form" [formGroup]="addNewItemForm" (ngSubmit)="onSubmit()">
+
+    <!-- This should be pre-populated with several suggested categories to allow user to select from -->
+    <!-- It will then be passed into the backend to see if category exists to extract the category_id -->
+    <!-- <label class="form-label" for="category">Category:</label> -->
+
+    <!-- <select class="form-control" name="category" *ngFor="let category of categories">
+      <option value={{category}}>
+        {{category}}
+      </option>
+    </select> -->
+
+    <label class="form-label" for="name">Name:</label>
+    <input type="text" class="form-control" name="name" placeholder="Product name">
+
+    <br>
+    <label class="form-label" for="description">Description:</label>
+    <textarea class="form-control" name="description" id="" cols="30" rows="10"
+      placeholder="Product description"></textarea>
+    <br>
+    <label for="image">Images: </label>
+    <input type="file" class="form-control">
+    <br>
+    <label for="price">Price: </label>
+    <input type="number" name="price" class="form-control" placeholder="How much would you like to sell?">
+    <br>
+    <label for="stock">Stock: </label>
+    <input type="number" name="stock" class="form-control" placeholder="Number of stocks you have">
+    <br>
+    <label for="weight">Weight: </label>
+    <input type="number" name="weight" class="form-control" placeholder="Weight in kilogram">
+
+    <!-- THIS SHOULD BE ENUM BASED ON WHAT LOGISTICS THE SELLER HAS VIA CALL INTO LOGISTICS -->
+    <!-- <label for="logistics">Logistics:</label>
+    -->
+
+    <!-- CAN ADD MORE FIELDS IN THE FUTURE BUT SO FAR THESE ARE THE REQUIRED FIELDS FROM SHOPEE API -->
+    <br>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-dark" type="submit">Add New Item!</button>
+    </div>
+  </form>
+</div>

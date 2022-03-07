@@ -1,0 +1,12 @@
+#rul {
+  text-decoration: none;
+}
+
+td {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* table {
+  table-layout: fixed;
+} */

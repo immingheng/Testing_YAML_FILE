@@ -1,0 +1,114 @@
+<!-- TODO IMPLEMENT DASHBOARD -->
+<div class="d-flex justify-content-center">
+  <h1>Centralised Inventory</h1>
+</div>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Image Thumbnail</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td><img src={{item.image}} alt={{item.name}}></td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.quantity}}</td>
+        <td>${{item.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-outline" type="button" routerLink="/seller/addItem"><b>Add New Item</b></button>
+  </div>
+</div>
+
+
+
+<div class="d-flex justify-content-center">
+  <h2>eCommerce Stores</h2>
+</div>
+<hr>
+<div>
+  <!-- LINK SHOPEE -->
+  <div class="container-fluid d-flex justify-content-around">
+    <img class="img-fluid" src="assets\static\Shopee.png" height="30em" width="150em">
+    <!-- THE HREF LINKS ARE HARDCODED AS THE TOKEN REQUIRES HASHING OF THE API SECRET KEY WHICH WILL REQUIRE EXTERNAL MODULES TO HANDLE - THIS CAN BE HANDLED IN THE FUTURE -->
+
+    <!-- DEVELOPMENT BUTTONS -->
+    <!-- <button class="btn btn-outline" type="button" [disabled]="shopeeExists&&shopeeLinked"><b><a id="rul"
+          href="https://partner.test-stable.shopeemobile.com/api/v1/shop/auth_partner?id=1006071&token=37a1082093c0b54cc0cf95c8a5c92a72a0437e6d1c7e1fb16f260867f32c3cc0&redirect=http://localhost:4200/seller">Link</a></b></button>
+    <button class="btn btn-outline" type="button" [disabled]="!shopeeExists||!shopeeLinked" (click)="unlinkShop()"><b><a
+          id="rul"
+          href="https://partner.test-stable.shopeemobile.com/api/v1/shop/cancel_auth_partner?id=1006071&token=37a1082093c0b54cc0cf95c8a5c92a72a0437e6d1c7e1fb16f260867f32c3cc0&redirect=http://localhost:4200/seller">Unlink</a></b></button> -->
+
+    <!-- PRODUCTION BUTTONS -->
+    <button class="btn btn-outline" type="button" [disabled]="shopeeExists&&shopeeLinked"><b><a id="rul"
+          href="https://partner.test-stable.shopeemobile.com/api/v1/shop/auth_partner?id=1006071&token=d316e3e783a5366ec541f1d02ecd6fc8ebd46a8da9a3734c684b1980afe64840&redirect=https://my-cute-shop.vercel.app/seller">Link</a></b></button>
+    <button class="btn btn-outline" type="button" [disabled]="!shopeeExists || !shopeeLinked"
+      (click)="unlinkShop()"><b><a id="rul"
+          href="https://partner.test-stable.shopeemobile.com/api/v1/shop/cancel_auth_partner?id=1006071&token=d316e3e783a5366ec541f1d02ecd6fc8ebd46a8da9a3734c684b1980afe64840&redirect=https://my-cute-shop.vercel.app/seller">Unlink</a></b></button>
+
+    <button class="btn btn-outline" type="button" (click)="getShopeeListings()"
+      *ngIf="shopeeExists||shopeeLinked"><b>Get
+        Listings</b></button>
+  </div>
+  <div class="container-fluid">
+    <table *ngIf="shopeeExists||shopeeLinked" class="table">
+      <thead>
+        <tr>
+          <th scope="col">Image Thumbnail</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of shopeeItems, let i = index">
+          <td scope="row"><img [src]="imageUrls[i]" alt={{item.product_name}}></td>
+          <td>{{item.product_name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.quantity}}</td>
+          <td>${{item.price}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+
+    <!-- LINK LAZADA -->
+    <div class="container-fluid d-flex justify-content-around">
+      <img class="img-fluid" src="assets\static\Lazada.png" height="20em" width="150em">
+      <button class="btn btn-outline" type="button" [disabled]="lazadaLinked"><b><a id="rul"
+            href="https://auth.lazada.com/oauth/authorize?response_type=code&force_auth=true&client_id=107418&redirect_uri=https://www.my-cute-shop.vercel.app/seller">Link</a></b></button>
+      <button class="btn btn-outline" type="button" [disabled]="!lazadaLinked"><b><a id="rul"
+            href="">Unlink</a></b></button>
+      <button class="btn btn-outline" type="button" (click)="getLazadaListings()" *ngIf="lazadaLinked"><b>Get
+          Listings</b></button>
+    </div>
+    <div>
+      <table *ngIf="lazadaLinked" class="table">
+        <thead>
+          <tr>
+            <th scope="col">Image Thumbnail</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of lazadaItems">
+            <td><img src={{item.image}} alt={{item.name}}></td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.quantity}}</td>
+            <td>${{item.price}}</td>
+          </tr>
+        </tbody>
+      </table>

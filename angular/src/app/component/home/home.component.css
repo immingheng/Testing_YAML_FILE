@@ -1,0 +1,13 @@
+/* Container holding the image and the text */
+.container-xs {
+  position: relative;
+  text-align: center;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,13 @@
+<div class="container-fluid d-flex justify-content-center">
+  <form class="form" [formGroup]="emailForm" (ngSubmit)="post2SB()">
+    <h1>Email Me:</h1>
+    <label class="form-label" for="subject">Subject: &nbsp;</label>
+    <input class="form-control" type="text" name="subject" formControlName="subject">
+    <label for="form-label" for="message">Message: &nbsp;</label>
+    <textarea class="form-control" name="message" cols="80" rows="10" formControlName="message"></textarea>
+    <br>
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-dark" [disabled]="this.emailForm.invalid">Send</button>
+    </div>
+  </form>
+</div>

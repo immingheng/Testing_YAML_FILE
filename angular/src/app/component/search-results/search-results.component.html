@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <h1>Search Results for {{query}}:</h1>
+    <p></p>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Rating</th>
+        <th scope="col">Product Price</th>
+        <th scope="col">Product Quantity</th>
+        <th scope="col">eCommerce Store</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of results">
+        <td>{{result.name}}</td>
+        <td>{{result.rating}}</td>
+        <td>{{result.price}}</td>
+        <td>{{result.quantity}]</td>
+        <td>{{result.origin}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

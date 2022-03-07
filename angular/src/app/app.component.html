@@ -1,0 +1,55 @@
+<div class="container">
+  <!-- NAVBAR -->
+  <div class="navbar fixed">
+    <div class="flex-1">
+      <a>
+        <img src="../assets/static/MGW.png" alt="mgw" width="50" height="50">
+      </a>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal p-0">
+        <li><a id="rul" routerLink="/">Home</a></li>
+        <li><a id="rul" routerLink="/about">About</a></li>
+        <li><a id="rul" routerLink="/contact">Contact</a></li>
+        <li tabindex="0">
+          <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+            <a (click)="auth.logout({ returnTo: document.location.origin })">
+              Log out
+            </a>
+          </ng-container>
+
+          <ng-template #loggedOut>
+            <a (click)="auth.loginWithRedirect()">Log in</a>
+          </ng-template>
+
+          <!-- <a *ngIf="!isLoggedIn" id="rul" (click)="auth.loginWithRedirect()">
+            Login
+            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+              <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+            </svg>
+          </a>
+          <ul *ngIf="!isLoggedIn" id="rul" class="p-2 bg-base-100">
+            <li><a id="rul" routerLink="/signup">Sign Up</a></li>
+          </ul>
+          <a *ngIf="isLoggedIn" id="rul" routerLink="/" (click)="logout()">
+            Logout
+          </a> -->
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="auth.user$ | async as user">
+    <p>Hello <b style="color:cornflowerblue">{{user.name}}</b>!</p>
+  </div>
+  <router-outlet></router-outlet>
+
+  <br>
+  <!-- FOOTER -->
+  <footer class="p-4 footer text-base-content footer-center">
+    <div>
+      <p>Copyright © {{year}} - All right reserved by MGW Pte Ltd
+      </p>
+    </div>
+  </footer>
+</div>
