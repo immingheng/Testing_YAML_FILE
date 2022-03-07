@@ -2,7 +2,8 @@ name: Heroku Deployment
 on:
   push:
     branches: [ master ]
-		path:'/springboot'
+	paths:
+		-'springboot'
 jobs:
   build:
 runs-on: ubuntu-latest
