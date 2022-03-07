@@ -4,8 +4,8 @@ on:
     branches: [ main ]
 jobs:
   build:
-runs-on: ubuntu-latest
-steps:
+   runs-on: ubuntu-latest
+   steps:
     - uses: actions/checkout@v2
     - name: Deploy to Heroku
       uses: AkhileshNS/heroku-deploy@v3.12.12
@@ -16,3 +16,4 @@ steps:
         heroku_email: ${{secrets.HEROKU_EMAIL}}
       # The appname to use for deploying/updating
         heroku_app_name: ${{secrets.HEROKU_APP}}
+        appdir: springboot
