@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().configurationSource(corsConfigurationSource()).and().csrf().and()
                 .authorizeRequests()
                 .mvcMatchers(HttpMethod.POST, "/api/mail/**").permitAll()
+                .mvcMatchers(HttpMethod.GET, "/").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
